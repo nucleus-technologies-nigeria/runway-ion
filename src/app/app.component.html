@@ -1,3 +1,6 @@
-<ion-app>
+<ion-app *ngIf="logged_in">
   <ion-router-outlet></ion-router-outlet>
+</ion-app>
+<ion-app *ngIf="!logged_in">
+  Hey there
 </ion-app>
