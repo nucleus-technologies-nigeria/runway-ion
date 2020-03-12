@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'products', loadChildren: './products/products.module#ProductsPageModule' },
   { path: 'analytics', loadChildren: './analytics/analytics.module#AnalyticsPageModule' },
   { path: 'returns', loadChildren: './returns/returns.module#ReturnsPageModule' },
-  { path: 'account', loadChildren: './account/account.module#AccountPageModule' }
+  { path: 'account', loadChildren: './account/account.module#AccountPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'error', loadChildren: './error/error.module#ErrorPageModule' }
 ];
 @NgModule({
   imports: [

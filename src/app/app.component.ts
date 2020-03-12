@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthenticationService } from './authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -17,19 +18,16 @@ export class AppComponent {
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-        private auth: AuthenticationService
+        private auth: AuthenticationService,
+        private router: Router
     ) {
         this.initializeApp();
-        this.auth.logged_in().subscribe((data)=>{
-            console.log(data);
-            if(data.success){
-                if(data.token){
-                    localStorage.setItem('access_token', data.token);//change to sqlite local storage but only w/sub and when there's enough content to also do a build
-                }
+        this.auth.logged_in().subscribe((data) => {
+            if(!data.success) {
+                this.router.navigateByUrl('/login', { skipLocationChange: true });
             }
-        }, (err)=>{
-            console.log("An error occured");
-            console.error(err);
+        }, () => {
+            this.router.navigateByUrl('/error', { skipLocationChange: true });
         });
     }
 

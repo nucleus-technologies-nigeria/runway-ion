@@ -1,5 +1,7 @@
 {
   "name": "runway-ion",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
